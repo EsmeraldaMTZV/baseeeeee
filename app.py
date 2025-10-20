@@ -27,8 +27,8 @@ def acercade():
 def acercade():
     return render_template("registro.html")
 
-@app.route("/registrame", methods=("GET", "POST"))
-def registrame():
+@app.route("/sesion", methods=("GET", "POST"))
+def sesion():
     error = None
     if request.method == "POST":
         nombre= request.form["nombre"]
@@ -46,7 +46,7 @@ def registrame():
             return render_template("registro.html")
         else:
             flash(f"¡Registro exitoso para el usuario: {nombre, Apellido}")
-            return render_template ("registro.html")
+            return render_template ("sesion.html")
         
     return
         
