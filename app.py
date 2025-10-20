@@ -27,6 +27,11 @@ def acercade():
 def acercade():
     return render_template("registro.html")
 
+@app.route("/registrame", methods=("GET", "POST"))
+def registrame():
+    error = None
+    if request.method == "POST":
+
 if __name__ == "__main__":
     app.run(debug=True)
 
