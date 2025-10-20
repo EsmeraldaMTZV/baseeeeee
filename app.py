@@ -32,6 +32,14 @@ def registrame():
     error = None
     if request.method == "POST":
 
+        nombre= request.form["nombre"]
+        Apellido = request.form["apellido"]
+        genero = request.form["genero"]
+        email = request.form["email"]
+        contraseña = request.form["contraseña"]
+        confirmContraseña = request.form["confirmContraseña"]
+        
+
 if __name__ == "__main__":
     app.run(debug=True)
 
