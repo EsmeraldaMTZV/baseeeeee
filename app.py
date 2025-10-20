@@ -22,6 +22,10 @@ def maravillass():
 @app.route("/acercade")
 def acercade():
     return render_template("acercade.html")
+    
+@app.route("/registro")
+def acercade():
+    return render_template("registro.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
