@@ -46,7 +46,7 @@ def registrame():
             return render_template("registro.html")
         else:
             flash(f"¡Registro exitoso para el usuario: {nombre, Apellido}")
-            return render_template ("inicio.html")
+            return render_template ("registro.html")
         
     return
         
