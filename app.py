@@ -31,13 +31,24 @@ def acercade():
 def registrame():
     error = None
     if request.method == "POST":
-
         nombre= request.form["nombre"]
         Apellido = request.form["apellido"]
         genero = request.form["genero"]
         email = request.form["email"]
         contraseña = request.form["contraseña"]
         confirmContraseña = request.form["confirmContraseña"]
+
+ if contraseña != confContraseña:
+            error= "La Contraseña no Coincide"
+            
+        if error != None:
+            flash(error)
+            return render_template("registro.html")
+        else:
+            flash(f"¡Registro exitoso para el usuario: {nombre, Apellido}")
+            return render_template ("inicio.html")
+        
+    return
         
 
 if __name__ == "__main__":
