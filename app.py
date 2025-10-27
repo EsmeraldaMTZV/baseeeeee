@@ -31,7 +31,7 @@ def registro():
 def login():
     return render_template('login.html')
 
-@app.route("/sesion", methods= ("POST"))
+@app.route("/registtro", methods= ("POST"))
 def sesion():
     error = None
     if request.method == "POST":
