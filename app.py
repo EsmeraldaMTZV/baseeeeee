@@ -24,10 +24,14 @@ def acercade():
     return render_template("acercade.html")
     
 @app.route("/registro")
-def acercade():
+def registro():
     return render_template("registro.html")
 
-@app.route("/sesion", methods=("GET", "POST"))
+@app.route("/login" , methods=("POST"))
+def login():
+    return render_template('login.html')
+
+@app.route("/sesion", methods= ("POST"))
 def sesion():
     error = None
     if request.method == "POST":
@@ -36,20 +40,19 @@ def sesion():
         genero = request.form["genero"]
         email = request.form["email"]
         contraseña = request.form["contraseña"]
-        confirmContraseña = request.form["confirmContraseña"]
+        confirmContraseña = request.form.get["confirmContraseña"]
 
- if contraseña != confContraseña:
+        if contraseña != confirmContraseña:
             error= "La Contraseña no Coincide"
             
         if error != None:
             flash(error)
-            return render_template("registro.html")
+            return render_template("registro.html" , request.form)
         else:
-            flash(f"¡Registro exitoso para el usuario: {nombre, Apellido}")
-            return render_template ("sesion.html")
+            flash(f"¡Registro de usuario: {nombre, Apellido}")
+            return render_template ("login.html")
         
     return
-        
 
 if __name__ == "__main__":
     app.run(debug=True)
