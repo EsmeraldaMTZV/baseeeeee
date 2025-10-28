@@ -29,7 +29,32 @@ def registro():
 
 @app.route("/login" , methods=("POST"))
 def login():
+    if session.get('logueado')==True:
+        session.clear()
     return render_template('login.html')
+
+@app.route('/validaLogin', methods=['POST'])
+def validaLogin():
+    email = request.form.get('email', '').strip()
+    password = request.form.get('password', '')
+    if not email or not password:
+        flash ('Por favor, ingresa email y contraseña.', 'error')
+    elif email in USUARIOS_REGISTRADOS:
+        usuario = USUARIOS_REGISTRADOS[email]
+        if usuario['password'] == password:
+            session ['usuario_email'] = email 
+            session ['usuario'] = usuario['nombre']
+            session ['logueado'] = True
+            flash(f'¡Bienvenido, {usuario["nombre"]}!', 'success')
+            return redirect(url_for('inicio'))
+        else:
+            flash ('Contraseña incorrecta.', 'error')
+    else:
+        flash('El correo no está registrado.', 'error')
+    return redirect(url_for('login'))
+    
+@app.route('/cerrarSesion', methods=['POST'])
+def cerrar():
 
 @app.route("/registtro", methods= ("POST"))
 def sesion():
